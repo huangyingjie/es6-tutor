@@ -6,7 +6,8 @@ describe("test Symbol", function () {
     assert.typeOf(Symbol('my symbol'), 'symbol');
   });
   it('should not equal anything', function () {
-    assert.isFalse(Symbol("hello") == Symbol("hello"));
+    assert.notStrictEqual(Symbol("hello"), Symbol("hello"));
+    assert.notEqual(Symbol("hello"), Symbol("hello"));
   });
   it('should share symbol value while using method `for`', function () {
     assert.equal(Symbol.for("anything"), Symbol.for("anything"));
@@ -19,7 +20,7 @@ describe("test Symbol", function () {
         [Symbol.iterator]() {
           const self = this;
           let index = 0;
-          return  {
+          return {
             next() {
               if (index === 0) {
                 index++;
