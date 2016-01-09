@@ -7,9 +7,6 @@ describe("test Symbol", function () {
   it('should not equal anything', function () {
     assert.isFalse(Symbol("hello") == Symbol("hello"));
   });
-  it('should share symbol value using method `for`', function () {
-    assert.equal(Symbol.for("anything"), Symbol.for("anything"));
-  });
   it('should share symbol value while using method `for`', function () {
     assert.equal(Symbol.for("anything"), Symbol.for("anything"));
   });
