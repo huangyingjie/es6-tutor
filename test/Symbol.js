@@ -1,4 +1,5 @@
 import {assert} from 'chai';
+import 'babel-polyfill';
 
 describe("test Symbol", function () {
   it("Symbol is a new data type", function () {
@@ -10,7 +11,7 @@ describe("test Symbol", function () {
   it('should share symbol value while using method `for`', function () {
     assert.equal(Symbol.for("anything"), Symbol.for("anything"));
   });
-  describe("should support `for of` when [Symbol.iterator]() and next() implemented", function () {
+  describe("should support `for of` when [Symbol.iterator]() and next() are implemented", function () {
     it('implemented by object literals', function () {
       const obj = {
         a: 1,
@@ -32,6 +33,12 @@ describe("test Symbol", function () {
           };
         }
       };
+      const iterator = obj[Symbol.iterator]();
+      assert.typeOf(iterator.next, 'function');
+      assert.equal(iterator.next().value, obj.a);
+      assert.equal(iterator.next().value, obj.b);
+      assert.equal(iterator.next().value, undefined);
+      assert.equal(iterator.next().value, undefined);
       //挨个遍历
       let index = 0;
       for(let i of obj) {
@@ -42,7 +49,6 @@ describe("test Symbol", function () {
           assert.equal(i, obj.b);
         }
       }
-      assert.typeOf(obj[Symbol.iterator]().next, "function");
     });
 
     var Iterator;
@@ -91,6 +97,20 @@ describe("test Symbol", function () {
         assert.equal(iterator.next().value, 3);
         assert.equal(iterator.next().value, undefined);
         assert.equal(iterator.next().value, undefined);
+      });
+    });
+    describe("All generators have a built-in implementation of .next() and [Symbol.iterator]()", function () {
+      it("implement a range function using generator", function () {
+        function* range (start, end) {
+          for (var i = start; i <= end; i++) {
+            yield i;
+          }
+        }
+        var generator = range(1, 3);
+        assert.equal(generator.next().value, 1);
+        assert.equal(generator.next().value, 2);
+        assert.equal(generator.next().value, 3);
+        assert.equal(generator.next().done, true);
       });
     });
   });
