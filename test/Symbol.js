@@ -42,7 +42,7 @@ describe("test Symbol", function () {
       assert.equal(iterator.next().value, undefined);
       //挨个遍历
       let index = 0;
-      for(let i of obj) {
+      for(const i of obj) {
         if (index === 0) {
           index++;
           assert.equal(i, obj.a);
@@ -52,7 +52,7 @@ describe("test Symbol", function () {
       }
     });
 
-    var Iterator;
+    let Iterator;
     before(function () {
       //应该实现两个接口：
       class Inner {
@@ -76,23 +76,23 @@ describe("test Symbol", function () {
     describe('#implemented by class', function () {
       it("should pass by `for of`", function () {
         //定义一个Iterator
-        var iterator = new Iterator(1, 3);
+        const iterator = new Iterator(1, 3);
         const firstResult = [];
         const result = [1, 2, 3];
-        for (let x of iterator) {
+        for (const x of iterator) {
           firstResult.push(x);
         }
         assert.deepEqual(firstResult, result);
         // 若干次调用结果应该一样
         const secondResult = [];
-        for (let x of iterator) {
+        for (const x of iterator) {
           secondResult.push(x);
         }
         assert.deepEqual(secondResult, result);
       });
       // 采用iterator遍历的方式
       it("should pass by `next` too", function () {
-        var iterator = new Iterator(1, 3)[Symbol.iterator]();
+        const iterator = new Iterator(1, 3)[Symbol.iterator]();
         assert.equal(iterator.next().value, 1);
         assert.equal(iterator.next().value, 2);
         assert.equal(iterator.next().value, 3);
@@ -103,11 +103,11 @@ describe("test Symbol", function () {
     describe("All generators have a built-in implementation of .next() and [Symbol.iterator]()", function () {
       it("implement a range function using generator", function () {
         function* range (start, end) {
-          for (var i = start; i <= end; i++) {
+          for (let i = start; i <= end; i++) {
             yield i;
           }
         }
-        var generator = range(1, 3);
+        const generator = range(1, 3);
         assert.equal(generator.next().value, 1);
         assert.equal(generator.next().value, 2);
         assert.equal(generator.next().value, 3);
