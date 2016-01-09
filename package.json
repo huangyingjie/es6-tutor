@@ -4,7 +4,9 @@
   "description": "learn && pratice es6",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -w -c --compilers js:babel-register"
+    "lint": "node_modules/.bin/eslint .",
+    "start": "node_modules/.bin/mocha -w -c --compilers js:babel-register",
+    "test": "node_modules/.bin/mocha --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
