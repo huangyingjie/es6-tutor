@@ -115,6 +115,12 @@
       // require immediate function invocation to be wrapped in parentheses
       'wrap-iife': [2, 'any'],
       // require or disallow Yoda conditions
-      'yoda': 2
+      'yoda': 2,
+      // Stylistic Issues
+      // space-before-keywords
+      'space-before-keywords':  [1, "always"],
+      'no-trailing-spaces': 2,
+      //es6
+      'require-yield': 2
     }
 }
