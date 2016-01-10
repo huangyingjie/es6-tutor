@@ -4,3 +4,9 @@
 ## 如何开始
 
 npm i && npm start
+
+## 文档
+
+* infoq的es6系列
+
+http://www.infoq.com/cn/articles/es6-in-depth-proxies-and-reflect
