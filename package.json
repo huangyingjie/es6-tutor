@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "node_modules/.bin/eslint .",
-    "start": "node_modules/.bin/mocha -w -c --compilers js:babel-register",
+    "start": "node_modules/.bin/mocha -w -c --compilers js:babel-register --harmony_proxies",
     "test": "node_modules/.bin/mocha --compilers js:babel-register"
   },
   "repository": {
@@ -33,6 +33,7 @@
   "homepage": "https://github.com/huangyingjie/es6-tutor#readme",
   "dependencies": {
     "babel-core": "^6.4.0",
-    "babel-polyfill": "^6.3.14"
+    "babel-polyfill": "^6.3.14",
+    "harmony-reflect": "^1.4.2"
   }
 }

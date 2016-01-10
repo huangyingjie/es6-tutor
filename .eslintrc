@@ -120,6 +120,8 @@
       // space-before-keywords
       'space-before-keywords':  [1, "always"],
       'no-trailing-spaces': 2,
+      'comma-spacing': 1,
+      'key-spacing': [1, {"afterColon": true}],
       //es6
       'no-arrow-condition': 2,
       'no-const-assign': 2,
