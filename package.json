@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "node_modules/.bin/eslint .",
     "start": "node_modules/.bin/mocha -w -c --compilers js:babel-register --harmony_proxies",
-    "test": "node_modules/.bin/mocha --compilers js:babel-register"
+    "test": "node_modules/.bin/mocha --compilers js:babel-register --harmony_proxies"
   },
   "repository": {
     "type": "git",

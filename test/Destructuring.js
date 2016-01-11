@@ -1,10 +1,10 @@
 import {assert} from "chai";
 describe("destructuring", function () {
   it("array", function () {
-    const [a, b, ,c] = [1, 2, 3, 4];
+    const [a, b, ...c] = [1, 2, 3, 4];
     assert.equal(a, 1);
     assert.equal(b, 2);
-    assert.equal(c, 4);
+    assert.deepEqual(c, [3, 4]);
     //default value
     const [x = 1] = [];
     assert.equal(x, 1);
